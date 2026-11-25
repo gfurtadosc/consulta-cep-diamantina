@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consulta de CEPs de Diamantina/MG | Sistemas de Informação UEMG Carangola</title>
+  <meta name="description" content="Consulte CEPs de logradouros de Diamantina/MG. Atividade prática do curso de Sistemas de Informação da UEMG, Unidade Carangola.">
+  <link rel="icon" type="image/png" href="./assets/logo-si.png">
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="./js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#busca">Pular para a busca de CEP</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <img class="site-header__logo" src="./assets/logo-si.png" width="64" height="64"
+           alt="Logotipo do curso de Sistemas de Informação da UEMG Carangola">
+      <p class="site-header__brand">
+        <strong>Sistemas de Informação</strong>
+        <span>UEMG · Unidade Acadêmica de Carangola</span>
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="titulo-principal">
+      <img class="hero__image"
+           src="./assets/hero-cidade-960.jpg"
+           srcset="./assets/hero-cidade-960.jpg 960w, ./assets/hero-cidade-1920.jpg 1920w"
+           sizes="100vw"
+           width="1920" height="1289"
+           alt="Vista panorâmica do centro histórico de Diamantina, com casarões de telhados coloniais, igrejas e montanhas ao fundo">
+      <div class="container hero__content">
+        <p class="hero__eyebrow">Diamantina · Minas Gerais</p>
+        <h1 id="titulo-principal">Bem-vindo a Diamantina. Encontre o seu CEP.</h1>
+        <p class="hero__lead">Digite o nome de um logradouro e veja o endereço completo na hora.</p>
+      </div>
+      <p class="hero__credit">
+        Foto:
+        <a href="https://commons.wikimedia.org/wiki/File:Diamantina_vista_do_Cruzeiro.jpg"
+           target="_blank" rel="noopener noreferrer">Leandro Neumann Ciuffo</a>,
+        <a href="https://creativecommons.org/licenses/by/2.0/"
+           target="_blank" rel="noopener noreferrer">CC BY 2.0</a>
+      </p>
+    </section>
+
+    <section class="search container" id="busca" aria-labelledby="titulo-busca">
+      <div class="search__card">
+        <h2 id="titulo-busca">Consulta de CEP</h2>
+
+        <label class="search__label" for="campo-busca">Nome do logradouro</label>
+        <div class="autocomplete">
+          <input class="autocomplete__input" id="campo-busca" type="text" role="combobox"
+                 placeholder="Ex.: Rua Principal"
+                 autocomplete="off" autocapitalize="off" spellcheck="false"
+                 aria-autocomplete="list" aria-expanded="false"
+                 aria-controls="lista-sugestoes" aria-describedby="dica-busca status-busca"
+                 disabled>
+          <ul class="autocomplete__list" id="lista-sugestoes" role="listbox"
+              aria-label="Logradouros encontrados" hidden></ul>
+        </div>
+
+        <p class="search__hint" id="dica-busca">
+          A busca começa a partir de 3 caracteres. Experimente “principal”, “padre” ou “praça”.
+        </p>
+        <p class="search__status" id="status-busca" role="status">Carregando a base de CEPs…</p>
+        <noscript><p class="search__status is-error">Ative o JavaScript para usar a busca.</p></noscript>
+      </div>
+
+      <div id="area-resultado" aria-live="polite">
+        <article class="result" id="resultado" aria-labelledby="resultado-titulo" hidden>
+          <h3 id="resultado-titulo">Endereço selecionado</h3>
+
+          <p class="result__cep">
+            <span class="result__cep-label">CEP</span>
+            <strong class="result__cep-value" id="resultado-cep"></strong>
+          </p>
+
+          <dl class="result__data">
+            <div>
+              <dt>Logradouro</dt>
+              <dd id="resultado-logradouro"></dd>
+            </div>
+            <div>
+              <dt>Bairro</dt>
+              <dd id="resultado-bairro"></dd>
+            </div>
+            <div>
+              <dt>Localidade/UF</dt>
+              <dd id="resultado-localidade"></dd>
+            </div>
+            <div id="linha-complemento">
+              <dt>Complemento</dt>
+              <dd id="resultado-complemento"></dd>
+            </div>
+            <div id="linha-unidade">
+              <dt>Unidade</dt>
+              <dd id="resultado-unidade"></dd>
+            </div>
+          </dl>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__logos">
+        <img src="./assets/logo-si.png" width="88" height="88" loading="lazy"
+             alt="Logotipo do curso de Sistemas de Informação da UEMG Carangola">
+        <a href="https://www.uemg.br/carangola" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/logo-uemg-carangola.png" width="88" height="88" loading="lazy"
+               alt="UEMG Carangola: abrir a página oficial em nova aba">
+        </a>
+      </div>
+
+      <nav aria-label="Informações sobre o projeto">
+        <ul class="site-footer__links">
+          <li><button type="button" class="link-button" data-modal="modal-sobre" aria-haspopup="dialog">Sobre</button></li>
+          <li><button type="button" class="link-button" data-modal="modal-termos" aria-haspopup="dialog">Termos de Uso</button></li>
+          <li><button type="button" class="link-button" data-modal="modal-privacidade" aria-haspopup="dialog">Privacidade</button></li>
+        </ul>
+      </nav>
+
+      <p class="site-footer__note">Atividade acadêmica · Programação 2 · Dados obtidos do ViaCEP</p>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="modal-sobre" aria-labelledby="modal-sobre-titulo">
+    <div class="modal__box">
+      <header class="modal__header">
+        <h2 id="modal-sobre-titulo">Sobre</h2>
+        <button type="button" class="modal__close" data-close>
+          <span aria-hidden="true">✕</span> Fechar
+        </button>
+      </header>
+      <div class="modal__body">
+        <h3>Sobre o projeto</h3>
+        <p>
+          Esta landing page foi desenvolvida como atividade prática da disciplina de
+          <strong>Programação 2</strong>, integrando os conhecimentos da disciplina de
+          Desenvolvimento Web, para a turma do 2º Período do curso de Bacharelado em
+          <strong>Sistemas de Informação</strong> da Universidade do Estado de Minas Gerais
+          (UEMG), Unidade Acadêmica de Carangola.
+        </p>
+        <p>
+          A finalidade pedagógica é praticar HTML5 semântico, CSS3 e JavaScript puro, consumindo
+          um arquivo JSON local para consultar CEPs de Diamantina/MG.
+        </p>
+
+        <h3>Equipe de desenvolvimento</h3>
+        <ul>
+          <li>Gabriel Furtado</li>
+          <li>Lucas Calegari</li>
+          <li>Flávio Cândido</li>
+        </ul>
+
+        <h3>Nota de transparência sobre o uso de IA</h3>
+        <p>
+          Em consonância com os princípios de integridade acadêmica e transparência tecnológica,
+          declara-se que ferramentas de Inteligência Artificial generativa <strong>foram
+          utilizadas</strong> durante o desenvolvimento deste projeto. Foram aplicadas na geração
+          do código HTML, CSS e JavaScript, na consolidação da base de CEPs, na escolha da
+          fotografia e na documentação, sendo a revisão e a validação final de responsabilidade
+          dos membros da equipe.
+        </p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="modal-termos" aria-labelledby="modal-termos-titulo">
+    <div class="modal__box">
+      <header class="modal__header">
+        <h2 id="modal-termos-titulo">Termos de Uso</h2>
+        <button type="button" class="modal__close" data-close>
+          <span aria-hidden="true">✕</span> Fechar
+        </button>
+      </header>
+      <div class="modal__body">
+        <ol>
+          <li><strong>Finalidade acadêmica:</strong> esta aplicação web possui finalidade exclusivamente didática e pedagógica, vinculada às atividades formativas da UEMG Unidade Carangola.</li>
+          <li><strong>Natureza dos dados:</strong> as informações de logradouros e Códigos de Endereçamento Postal (CEP) foram extraídas de bases públicas (ViaCEP) e são apresentadas em caráter meramente informativo, sem garantias de atualização cadastral em tempo real.</li>
+          <li><strong>Isenção de responsabilidade:</strong> a equipe e a instituição ficam isentas de responsabilidades civis e comerciais, não respondendo por eventuais divergências cadastrais perante a Empresa Brasileira de Correios e Telégrafos nem por utilizações comerciais indevidas desta plataforma.</li>
+        </ol>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="modal-privacidade" aria-labelledby="modal-privacidade-titulo">
+    <div class="modal__box">
+      <header class="modal__header">
+        <h2 id="modal-privacidade-titulo">Política de Privacidade</h2>
+        <button type="button" class="modal__close" data-close>
+          <span aria-hidden="true">✕</span> Fechar
+        </button>
+      </header>
+      <div class="modal__body">
+        <ol>
+          <li><strong>Não coleta de dados pessoais:</strong> esta landing page não coleta, não solicita, não processa e não armazena quaisquer dados de identificação pessoal, cookies de rastreamento ou dados sensíveis dos visitantes.</li>
+          <li><strong>Execução local:</strong> o processamento da busca ocorre de forma estritamente local no navegador. Os logradouros e CEPs são filtrados na memória a partir de um arquivo estático (JSON), sem telemetria, rastreamento ou comunicação com servidores de rastreamento externos.</li>
+          <li><strong>Conformidade:</strong> esta aplicação segue os princípios fundamentais da Lei Geral de Proteção de Dados Pessoais (LGPD, Lei Federal nº 13.709/2018), pautando-se na minimização absoluta de dados e na transparência.</li>
+        </ol>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
