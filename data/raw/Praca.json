@@ -1,0 +1,32 @@
+[
+  {
+    "cep": "39100-970",
+    "logradouro": "Praça Correa Rabelo",
+    "complemento": "93",
+    "unidade": "AC Diamantina",
+    "bairro": "Centro",
+    "localidade": "Diamantina",
+    "uf": "MG",
+    "estado": "Minas Gerais",
+    "regiao": "Sudeste",
+    "ibge": "3121605",
+    "gia": "",
+    "ddd": "38",
+    "siafi": "4431"
+  },
+  {
+    "cep": "39100-959",
+    "logradouro": "Praça Correa Rabelo",
+    "complemento": "93",
+    "unidade": "AC Diamantina",
+    "bairro": "Centro",
+    "localidade": "Diamantina",
+    "uf": "MG",
+    "estado": "Minas Gerais",
+    "regiao": "Sudeste",
+    "ibge": "3121605",
+    "gia": "",
+    "ddd": "38",
+    "siafi": "4431"
+  }
+]
